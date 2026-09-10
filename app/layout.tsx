@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { FilmGrain } from "@/components/FilmGrain";
+import { SubscribeProvider } from "@/components/Subscribe";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -48,10 +49,12 @@ export default function RootLayout({
     >
       <body className={`${GeistSans.className} min-h-screen bg-sand-50 text-ink antialiased`}>
         <SmoothScroll>
-          <FilmGrain />
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
+          <SubscribeProvider>
+            <FilmGrain />
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+          </SubscribeProvider>
         </SmoothScroll>
       </body>
     </html>

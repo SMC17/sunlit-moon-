@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { DevelopmentTracker } from "@/components/DevelopmentTracker";
 import { EntityCard } from "@/components/EntityCard";
 import { EntityLinkList } from "@/components/EntityCard";
+import { NewsletterBand } from "@/components/Subscribe";
 import { PageIntro } from "@/components/PageIntro";
 import { StatusChip } from "@/components/StatusChip";
 import { StoryCard } from "@/components/StoryCard";
@@ -131,11 +132,12 @@ export function EntityDetail({ type, slug }: { type: EntityType; slug: string })
         </section>
       ) : null}
 
-      <p className="mx-auto mt-14 max-w-page px-5 text-sm text-ink-faint md:px-8">
+      <p className="mx-auto mt-14 mb-16 max-w-page px-5 text-sm text-ink-faint md:px-8">
         <a href={entityPath[type]} className="link-quiet">
           ← All {intro.title.toLowerCase()}
         </a>
       </p>
+      <NewsletterBand title="When this file moves, you’ll know." />
     </article>
   );
 }

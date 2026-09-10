@@ -2,20 +2,21 @@
 
 **Place OS** for Evanston & the North Shore — Volume 0.
 
-A civic publication, not a dashboard: magazine hierarchy, newspaper discipline, and a public ledger of stories, buildings, and the people who tend them.
+A civic publication with conversion energy: a selling hero, photographic heat, and a weekly brief you’d actually subscribe to.
 
 ## Craft
 
 Editorial stack on top of Next.js + Tailwind:
 
 - **Instrument Serif** + **Newsreader** + **Geist Sans**
-- **Motion** — page transitions, staggered masthead/pulse, restrained press states
+- **Motion** — page transitions, staggered reveals, CTA press
 - **Radix UI** — accessible mobile menu (Dialog) and development status tabs
 - **Lenis** — smooth scroll on the edition
-- **Embla** — quiet drag rail for the rest of the stories
+- **Embla** — story rail with thumbnails
+- **Vaul** — subscribe drawer
 - SVG film grain overlay (paper, not TV static)
 
-Sea is used as a rare accent. Pulse is type on paper, not KPI cards. The lead story is a cover plate.
+Conversion surfaces: selling hero, clickable photographic pulse, story cards with images, sticky mobile CTA, mid-page and end-of-story brief.
 
 ## Product
 
@@ -41,7 +42,7 @@ Next.js App Router, TypeScript, Tailwind. Content lives in-repo:
 | `/rss.xml` | RSS of stories |
 | `/sitemap.xml` | Sitemap |
 
-Homepage: masthead with issue date, data-driven pulse counters, featured + latest stories, development tracker with print-inspired status chips (**Proposed / In review / Approved / Under construction / Complete**), “What changed this month,” footer mission line, and a coming-soon note for Long Island, Palm Beach, and New York City.
+Homepage: selling hero with primary/secondary CTAs, photographic pulse into the ledger, cover story, newsletter bands, thumbnail story rail, development tracker, “What changed,” sticky mobile subscribe.
 
 Stories and entities link both ways.
 
