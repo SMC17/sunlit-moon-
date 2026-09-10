@@ -1,0 +1,23 @@
+import type { Metadata } from "next";
+import { EntityDetail } from "@/components/EntityPages";
+import { getEntitiesByType, getEntity } from "@/lib/content";
+
+type Params = Promise<{ slug: string }>;
+
+export function generateStaticParams() {
+  return getEntitiesByType("person").map((entity) => ({ slug: entity.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params;
+  const entity = getEntity(slug);
+  return {
+    title: entity?.name ?? "Person",
+    description: entity?.dek,
+  };
+}
+
+export default async function PersonPage({ params }: { params: Params }) {
+  const { slug } = await params;
+  return <EntityDetail type="person" slug={slug} />;
+}

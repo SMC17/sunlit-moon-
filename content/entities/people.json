@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "plan-commission",
+    "type": "person",
+    "name": "Evanston Plan Commission",
+    "dek": "The Tuesday-night room where the city’s next shape is argued in public.",
+    "summary": "A nine-member citizen commission that reviews zoning, planned developments, and the stories a city tells itself about density. Fountain Square and Main Street Lofts are both on the docket.",
+    "role": "Civic body",
+    "neighborhood": "Downtown",
+    "related": ["fountain-square-redevelopment", "main-street-lofts", "maya-chen", "downtown-evanston"]
+  },
+  {
+    "slug": "maya-chen",
+    "type": "person",
+    "name": "Maya Chen",
+    "dek": "City planning director — the staff voice in the Tuesday room.",
+    "summary": "Planning director for the City of Evanston (demo portrait). Chen’s memos on Fountain Square and Maple Avenue have become the unofficial syllabus for anyone trying to follow downtown.",
+    "role": "Planning director",
+    "neighborhood": "Downtown",
+    "related": ["plan-commission", "fountain-square-redevelopment", "maple-avenue-residences", "the-celery-stalk"]
+  },
+  {
+    "slug": "elias-ward",
+    "type": "person",
+    "name": "Elias Ward",
+    "dek": "Architect of the Fountain Square proposal now in review.",
+    "summary": "Principal of a Chicago studio asked to make a quieter tower and a wetter plaza. Ward’s drawings put the fountain back on axis with Church Street — a move that has already divided the room.",
+    "role": "Architect",
+    "neighborhood": "Downtown",
+    "related": ["fountain-square-redevelopment", "fountain-square", "plan-commission"]
+  },
+  {
+    "slug": "rosa-delgado",
+    "type": "person",
+    "name": "Rosa Delgado",
+    "dek": "Chair of the Downtown Partnership; keeper of Saturday.",
+    "summary": "A Central Street retailer who now chairs the downtown business partnership (demo portrait). Delgado’s test for any Fountain Square plan is simple: does the farmers market still fit?",
+    "role": "Downtown Partnership chair",
+    "neighborhood": "Downtown",
+    "related": ["downtown-partnership", "evanston-farmers-market", "central-street", "fountain-square-redevelopment"]
+  },
+  {
+    "slug": "nate-okonkwo",
+    "type": "person",
+    "name": "Nate Okonkwo",
+    "dek": "The alderman who keeps asking who the plaza is for.",
+    "summary": "A ward alderman (demo portrait) whose questions at Plan Commission tend to be about ground-floor life rather than height. He has become the unofficial narrator of the Fountain Square file.",
+    "role": "Alderman",
+    "neighborhood": "Downtown",
+    "related": ["plan-commission", "fountain-square-redevelopment", "downtown-evanston"]
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "downtown-evanston",
+    "type": "place",
+    "name": "Downtown Evanston",
+    "dek": "Sherman, Chicago, Church — the civic and commercial heart of the city.",
+    "summary": "The compact downtown between the el and the lake: Fountain Square, the library lawn, Northwestern’s western edge, and a retail mix that still includes independents. Every major proposal of the decade lands here first.",
+    "neighborhood": "Downtown",
+    "related": ["fountain-square", "fountain-square-redevelopment", "plan-commission", "downtown-partnership"]
+  },
+  {
+    "slug": "fountain-square",
+    "type": "place",
+    "name": "Fountain Square",
+    "dek": "The named room of downtown — currently a plaza waiting on its next life.",
+    "summary": "A paved civic square at Sherman and Church, historically marked by water. The present plaza is a holding pattern. The redevelopment now in review would restore a fountain, regrade the ground plane, and rebuild the enclosing block.",
+    "neighborhood": "Downtown",
+    "related": ["fountain-square-redevelopment", "downtown-evanston", "plan-commission"]
+  },
+  {
+    "slug": "evanston-lakefront",
+    "type": "place",
+    "name": "Evanston lakefront",
+    "dek": "Beaches, a lighthouse, and the city’s longest continuous public room.",
+    "summary": "From Calvary to Northwestern’s fill, the lakefront is Evanston’s argument that a suburb can still face water like a city. Beaches, the restored pavilion, and the lighthouse grounds form a single public sequence.",
+    "neighborhood": "Lakefront",
+    "related": ["lakefront-pavilion-restoration", "grosse-point-lighthouse", "northwestern-campus"]
+  },
+  {
+    "slug": "northwestern-campus",
+    "type": "place",
+    "name": "Northwestern campus",
+    "dek": "A private university that is also a public landscape.",
+    "summary": "The lakefill campus is both a gated academic precinct and one of the North Shore’s most visited landscapes. Its western edge meets downtown; its eastern edge is lake.",
+    "neighborhood": "Lakefill",
+    "related": ["evanston-lakefront", "downtown-evanston"]
+  },
+  {
+    "slug": "central-street",
+    "type": "place",
+    "name": "Central Street",
+    "dek": "A second downtown, linear and neighborly, running west from the lake.",
+    "summary": "Central Street is Evanston’s other commercial spine: bakeries, a hardware store that still cuts keys, and a Saturday rhythm that does not wait on Sherman Avenue.",
+    "neighborhood": "Central Street",
+    "related": ["larsens-bakery", "rosa-delgado"]
+  },
+  {
+    "slug": "main-dempster-mile",
+    "type": "place",
+    "name": "Main–Dempster Mile",
+    "dek": "The independent mile: bookstores of the mind, restaurants of the block.",
+    "summary": "Main and Dempster hold a stretch of walk-up brick and surviving independents — the city’s most legible argument that a street can still be a commons.",
+    "neighborhood": "Main–Dempster",
+    "related": ["bookends-and-beginnings", "union-pizzeria", "main-street-lofts"]
+  },
+  {
+    "slug": "grosse-point-lighthouse",
+    "type": "place",
+    "name": "Grosse Point Lighthouse",
+    "dek": "1873 brick and a beam that still means something after GPS.",
+    "summary": "The lighthouse and keeper’s grounds are a National Historic Landmark and the city’s most photogenic argument for keeping old public things in working order.",
+    "neighborhood": "Lakefront",
+    "related": ["evanston-lakefront", "lakefront-pavilion-restoration"]
+  }
+]
