@@ -82,49 +82,46 @@ const nightTone: Tone = {
   sideDeep: "#6E5A40",
 };
 
-/** Slim pinnate frond — fine teeth, long taper, real droop. */
-function featherPath(length: number, droop = 28) {
-  const n = 20;
-  const top: string[] = [];
-  const bot: string[] = [];
-  for (let i = 1; i <= n; i++) {
-    const t = i / n;
-    const x = length * t;
-    const y = droop * t * t;
-    const amp = (1 - t) * 8.5 + 1.2;
-    const tooth = i % 2 === 0 ? amp : amp * 0.4;
-    top.push(`${(x - 1.6).toFixed(1)},${(y - tooth).toFixed(1)}`);
-    bot.unshift(`${(x - 1.6).toFixed(1)},${(y + tooth * 0.82).toFixed(1)}`);
-  }
-  return `M 0,0 L ${top.join(" L ")} L ${length.toFixed(1)},${(droop + 3).toFixed(1)} L ${bot.join(" L ")} Z`;
+/** Broad drooping blade — a fountain of leaves, not a sea urchin. */
+function bladePath(length: number, droop: number, width: number) {
+  const mid = length * 0.42;
+  const tip = length;
+  return [
+    `M 0,2`,
+    `C ${mid * 0.35},${-width * 0.2} ${mid},${-width} ${length * 0.7},${-width * 0.45 + droop * 0.35}`,
+    `C ${length * 0.86},${-width * 0.12 + droop * 0.6} ${tip},${droop * 0.75} ${tip},${droop}`,
+    `C ${length * 0.86},${droop + width * 0.18} ${length * 0.7},${width * 0.4 + droop * 0.35} ${mid},${width * 0.62}`,
+    `C ${mid * 0.35},${width * 0.22} 10,8 0,3`,
+    `Z`,
+  ].join(" ");
 }
 
-function Frond({ length = 150, droop = 26, deep = false }: { length?: number; droop?: number; deep?: boolean }) {
-  return (
-    <path
-      d={featherPath(length, droop)}
-      fill={deep ? nagai.palmDeep : nagai.palm}
-    />
-  );
+function Frond({
+  length = 150,
+  droop = 36,
+  width = 22,
+  deep = false,
+}: {
+  length?: number;
+  droop?: number;
+  width?: number;
+  deep?: boolean;
+}) {
+  return <path d={bladePath(length, droop, width)} fill={deep ? nagai.palmDeep : nagai.palm} />;
 }
 
 const PALM_FRONDS = [
-  { r: -118, l: 78, d: 36 },
-  { r: -96, l: 118, d: 32 },
-  { r: -74, l: 148, d: 28 },
-  { r: -52, l: 168, d: 22 },
-  { r: -30, l: 178, d: 16 },
-  { r: -10, l: 184, d: 12 },
-  { r: 12, l: 180, d: 16 },
-  { r: 34, l: 166, d: 22 },
-  { r: 56, l: 146, d: 28 },
-  { r: 78, l: 120, d: 34 },
-  { r: 98, l: 92, d: 40 },
-  { r: 116, l: 70, d: 44 },
-  { r: -64, l: 96, d: 48 },
-  { r: 48, l: 90, d: 50 },
-  { r: -140, l: 64, d: 20 },
-  { r: 132, l: 58, d: 22 },
+  { r: -108, l: 92, d: 48, w: 18 },
+  { r: -78, l: 128, d: 40, w: 22 },
+  { r: -50, l: 152, d: 34, w: 24 },
+  { r: -24, l: 168, d: 26, w: 26 },
+  { r: 2, l: 174, d: 22, w: 26 },
+  { r: 28, l: 162, d: 30, w: 24 },
+  { r: 54, l: 140, d: 38, w: 22 },
+  { r: 80, l: 112, d: 46, w: 18 },
+  { r: 104, l: 86, d: 52, w: 16 },
+  { r: -128, l: 70, d: 30, w: 14 },
+  { r: 122, l: 64, d: 34, w: 14 },
 ];
 
 function Palm({
@@ -148,7 +145,7 @@ function Palm({
       <g transform="translate(0 -210)">
         {PALM_FRONDS.map((f, i) => (
           <g key={`${f.r}-${i}`} transform={`rotate(${f.r})`}>
-            <Frond length={f.l} droop={f.d} deep={i % 3 === 0} />
+            <Frond length={f.l} droop={f.d} width={f.w} deep={i % 3 === 0} />
           </g>
         ))}
         <circle r="7" fill={nagai.palmDeep} />
@@ -159,19 +156,19 @@ function Palm({
 
 function ChromeLadder({ x, y }: { x: number; y: number }) {
   return (
-    <g transform={`translate(${x} ${y})`}>
-      <path d="M -15 -90 C -22 -100, -18 -108, -10 -104 L -8 -90 Z" fill="#9AABB8" />
-      <path d="M 23 -90 C 30 -100, 26 -108, 18 -104 L 16 -90 Z" fill="#7E8E9A" />
-      <rect x="-12" y="-92" width="5" height="102" rx="1.4" fill="#9AABB8" />
-      <rect x="15" y="-92" width="5" height="102" rx="1.4" fill="#6E7E8A" />
-      <rect x="-12" y="-92" width="1.6" height="102" fill={nagai.chromeHi} />
+    <g transform={`translate(${x} ${y}) scale(1.18)`}>
+      <path d="M -16 -96 C -24 -108, -20 -116, -10 -110 L -8 -96 Z" fill="#9AABB8" />
+      <path d="M 26 -96 C 34 -108, 30 -116, 20 -110 L 18 -96 Z" fill="#6E7E8A" />
+      <rect x="-13" y="-98" width="6" height="112" rx="1.5" fill="#9AABB8" />
+      <rect x="17" y="-98" width="6" height="112" rx="1.5" fill="#5E6E7A" />
+      <rect x="-13" y="-98" width="2" height="112" fill={nagai.chromeHi} />
       {[0, 1, 2, 3, 4, 5].map((i) => (
         <g key={i}>
-          <rect x="-12" y={-78 + i * 15.5} width="32" height="3.4" rx="1" fill="#C5D0D8" />
-          <rect x="-12" y={-78 + i * 15.5} width="32" height="1.1" fill={nagai.chromeHi} opacity="0.75" />
+          <rect x="-13" y={-82 + i * 16.5} width="36" height="3.8" rx="1" fill="#C5D0D8" />
+          <rect x="-13" y={-82 + i * 16.5} width="36" height="1.2" fill={nagai.chromeHi} opacity="0.8" />
         </g>
       ))}
-      <rect x="-20" y="8" width="48" height="5" rx="1" fill="#8A9AAA" />
+      <rect x="-22" y="12" width="54" height="6" rx="1" fill="#6E7E8A" />
     </g>
   );
 }
@@ -179,12 +176,12 @@ function ChromeLadder({ x, y }: { x: number; y: number }) {
 function DivingBoard() {
   return (
     <g>
-      <polygon points="500,622 698,622 716,608 524,608" fill="#E8EEF2" />
-      <polygon points="524,608 716,608 728,600 540,600" fill={nagai.chromeHi} />
-      <polygon points="698,622 728,600 728,608 698,630" fill="#6E7E8A" />
-      <rect x="604" y="622" width="9" height="16" fill="#9AABB8" />
-      <rect x="636" y="622" width="9" height="16" fill="#7E8E9A" />
-      <rect x="598" y="636" width="54" height="6" rx="1" fill="#6E7E8A" />
+      <polygon points="488,626 710,626 732,608 516,608" fill="#E8EEF2" />
+      <polygon points="516,608 732,608 746,598 532,598" fill={nagai.chromeHi} />
+      <polygon points="710,626 746,598 746,610 710,636" fill="#5E6E7A" />
+      <rect x="598" y="626" width="11" height="18" fill="#9AABB8" />
+      <rect x="634" y="626" width="11" height="18" fill="#6E7E8A" />
+      <rect x="590" y="642" width="64" height="7" rx="1" fill="#5E6E7A" />
     </g>
   );
 }
@@ -218,10 +215,10 @@ function citySilhouette(y = 478) {
 }
 
 function facadePt(u: number, v: number): [number, number] {
-  const tl: [number, number] = [780, 268];
-  const tr: [number, number] = [1124, 292];
-  const bl: [number, number] = [780, 618];
-  const br: [number, number] = [1124, 586];
+  const tl: [number, number] = [748, 246];
+  const tr: [number, number] = [1068, 286];
+  const bl: [number, number] = [748, 628];
+  const br: [number, number] = [1068, 568];
   const topX = tl[0] + (tr[0] - tl[0]) * u;
   const topY = tl[1] + (tr[1] - tl[1]) * u;
   const botX = bl[0] + (br[0] - bl[0]) * u;
@@ -330,13 +327,7 @@ export function NagaiSceneArt({ scene = "sleeve" }: { scene?: NagaiScene }) {
           <feGaussianBlur stdDeviation="20" />
         </filter>
         <clipPath id={g("pool")}>
-          <polygon points="92,932 988,932 848,642 252,642" />
-        </clipPath>
-        <clipPath id={g("deckOnly")} clipPathUnits="userSpaceOnUse">
-          <path
-            clipRule="evenodd"
-            d="M 0 600 L 1600 572 L 1600 1000 L 0 1000 Z M 64 948 L 1020 948 L 868 628 L 208 628 Z"
-          />
+          <polygon points="88,928 968,928 788,648 298,648" />
         </clipPath>
       </defs>
 
@@ -385,78 +376,78 @@ export function NagaiSceneArt({ scene = "sleeve" }: { scene?: NagaiScene }) {
         />
       ))}
 
-      <polygon points="64,948 1020,948 868,628 208,628" fill={`url(#${g("cope")})`} />
-      {Array.from({ length: 20 }, (_, i) => (
+      <g className="nagai-shade">
+        <polygon points="748,628 1068,568 1296,498 980,628 420,980 40,980" fill={nagai.shadow} opacity={tone.night ? 0.28 : 0.16} />
+        <polygon points="340,618 412,618 80,980 -40,980" fill={nagai.shadow} opacity={tone.night ? 0.38 : 0.28} />
+        <polygon points="448,626 508,626 200,980 110,980" fill={nagai.shadow} opacity="0.2" />
+        <polygon points="1396,568 1470,568 1200,980 1090,980" fill={nagai.shadow} opacity="0.22" />
+        <polygon points="154,824 250,802 210,920 100,928" fill={nagai.shadow} opacity="0.2" />
+      </g>
+
+      <polygon points="36,962 1024,962 812,616 250,616" fill={`url(#${g("cope")})`} />
+      {Array.from({ length: 18 }, (_, i) => (
         <line
           key={i}
-          x1={80 + i * 46}
-          y1="948"
-          x2={80 + i * 46}
-          y2="934"
+          x1={58 + i * 52}
+          y1="962"
+          x2={58 + i * 52}
+          y2="938"
           stroke="#E4D2B4"
-          strokeWidth="2.2"
-          opacity="0.65"
+          strokeWidth="2.4"
+          opacity="0.75"
         />
       ))}
-      <polygon points="92,932 988,932 848,642 252,642" fill={`url(#${g("water")})`} />
+      <polygon points="88,928 968,928 788,648 298,648" fill={`url(#${g("water")})`} />
 
       <g clipPath={`url(#${g("pool")})`}>
-        <polygon points="252,642 848,642 820,698 278,698" fill={tone.water0} opacity="0.35" />
+        <polygon points="298,648 788,648 768,708 320,708" fill={tone.water0} opacity="0.42" />
         <path
-          d="M 140 720 C 300 688, 470 758, 640 726 C 780 700, 880 776, 980 806"
+          d="M 160 720 C 320 688, 490 758, 650 726 C 780 704, 860 770, 940 798"
           fill="none"
           stroke="#EFFFFF"
-          strokeWidth="10"
-          opacity="0.2"
+          strokeWidth="12"
+          opacity="0.28"
         />
         <path
-          d="M 130 802 C 290 770, 450 848, 620 814 C 760 788, 870 864, 960 886"
+          d="M 150 804 C 300 772, 460 848, 630 814 C 760 790, 850 854, 930 878"
           fill="none"
           stroke="#B7F4F4"
-          strokeWidth="7"
-          opacity="0.16"
+          strokeWidth="8"
+          opacity="0.22"
         />
-        <path d="M 190 868 C 340 844, 520 910, 720 878" fill="none" stroke="#8FEAF0" strokeWidth="5" opacity="0.2" />
-        <polygon points="760,642 988,642 900,820 690,788" fill={nagai.cream} opacity="0.18" />
-        <polygon points="796,664 872,658 858,748 798,754" fill={tone.glass1} opacity="0.26" />
-        <polygon points="900,664 972,658 950,748 892,754" fill={tone.glass1} opacity="0.2" />
-        <polygon points="270,642 430,642 250,840 140,818" fill={nagai.palmDeep} opacity="0.16" />
-        <polygon points="180,872 322,856 294,918 164,928" fill="#F4EDE0" opacity="0.42" />
-        <polygon points="206,888 304,876 288,918 200,924" fill="#E8D9B8" opacity="0.5" />
-        <polygon points="400,642 520,642 280,932 160,932" fill={nagai.shadow} opacity="0.14" />
+        <path d="M 200 868 C 360 844, 540 910, 740 876" fill="none" stroke="#8FEAF0" strokeWidth="6" opacity="0.26" />
+        <polygon points="700,642 978,642 880,820 660,786" fill={nagai.cream} opacity="0.2" />
+        <polygon points="748,662 830,656 816,746 754,752" fill={tone.glass1} opacity="0.28" />
+        <polygon points="860,662 936,656 914,746 852,752" fill={tone.glass1} opacity="0.22" />
+        <polygon points="300,642 450,642 260,840 150,818" fill={nagai.palmDeep} opacity="0.18" />
+        <polygon points="180,872 322,856 294,918 164,928" fill="#F4EDE0" opacity="0.45" />
+        <polygon points="206,888 304,876 288,918 200,924" fill="#E8D9B8" opacity="0.52" />
+        <polygon points="420,642 560,642 300,936 160,936" fill={nagai.shadow} opacity="0.2" />
       </g>
 
-      <polyline points="92,932 252,642 848,642 988,932" fill="none" stroke="#FFF8EC" strokeWidth="3.4" opacity="0.8" />
+      <polyline points="88,928 298,648 788,648 968,928" fill="none" stroke="#FFF8EC" strokeWidth="4" opacity="0.9" />
 
-      <g className="nagai-shade" clipPath={`url(#${g("deckOnly")})`}>
-        <polygon points="780,618 1124,586 1328,528 380,1000 -40,1000" fill={nagai.shadow} opacity={tone.night ? 0.5 : 0.32} />
-        <polygon points="372,618 430,618 40,1000 -80,1000" fill={nagai.shadow} opacity={tone.night ? 0.4 : 0.26} />
-        <polygon points="468,624 520,624 180,1000 90,1000" fill={nagai.shadow} opacity="0.18" />
-        <polygon points="1390,572 1460,572 1180,1000 1080,1000" fill={nagai.shadow} opacity="0.2" />
-        <polygon points="154,824 250,802 200,910 100,920" fill={nagai.shadow} opacity="0.18" />
-      </g>
-
-      <polygon points="1124,292 1328,248 1328,528 1124,586" fill={`url(#${g("side")})`} />
-      <polygon points="1124,430 1328,398 1328,412 1124,444" fill={tone.sideDeep} opacity="0.45" />
+      <polygon points="1068,286 1296,228 1296,498 1068,568" fill={`url(#${g("side")})`} />
+      <polygon points="1068,430 1296,388 1296,404 1068,446" fill={tone.sideDeep} opacity="0.5" />
       {[0, 1, 2].map((i) => {
-        const x = 1164 + i * 46;
-        const y0 = 318 + i * -8;
+        const x = 1112 + i * 50;
+        const y0 = 312 + i * -10;
         return (
           <g key={i}>
-            <polygon points={`${x},${y0} ${x + 20},${y0 - 6} ${x + 20},${y0 + 86} ${x},${y0 + 94}`} fill="#D8C9A8" />
+            <polygon points={`${x},${y0} ${x + 22},${y0 - 8} ${x + 22},${y0 + 80} ${x},${y0 + 90}`} fill="#D8C9A8" />
             <polygon
-              points={`${x + 3},${y0 + 7} ${x + 17},${y0 + 3} ${x + 17},${y0 + 78} ${x + 3},${y0 + 84}`}
+              points={`${x + 3},${y0 + 8} ${x + 19},${y0 + 2} ${x + 19},${y0 + 72} ${x + 3},${y0 + 80}`}
               fill={`url(#${glass})`}
             />
           </g>
         );
       })}
-      <circle cx="1264" cy="470" r="26" fill="#D8C9A8" />
-      <circle cx="1264" cy="470" r="19" fill={`url(#${glass})`} />
-      <path d="M 1252 460 A 19 19 0 0 1 1276 460 L 1270 484 L 1254 484 Z" fill="#FFFFFF" opacity="0.28" />
+      <circle cx="1238" cy="458" r="26" fill="#D8C9A8" />
+      <circle cx="1238" cy="458" r="19" fill={`url(#${glass})`} />
+      <path d="M 1226 448 A 19 19 0 0 1 1250 448 L 1244 472 L 1228 472 Z" fill="#FFFFFF" opacity="0.28" />
 
-      <polygon points="780,268 1124,292 1124,586 780,618" fill={nagai.cream} />
-      <polygon points="780,268 1124,292 1124,308 780,284" fill="#E8DCC0" />
+      <polygon points="748,246 1068,286 1068,568 748,628" fill={nagai.cream} />
+      <polygon points="748,246 1068,286 1068,304 748,264" fill="#E8DCC0" />
 
       {cols.map((u) => (
         <WindowPane key={`up-${u}`} u0={u} u1={u + 0.24} v0={0.08} v1={0.3} glass={glass} />
@@ -506,10 +497,13 @@ export function NagaiSceneArt({ scene = "sleeve" }: { scene?: NagaiScene }) {
         fill={nagai.warm}
       />
 
-      <polygon points="752,244 1154,270 1360,220 948,198" fill="#FBF4E4" />
-      <polygon points="752,244 1154,270 1124,292 780,268" fill="#D8C9A8" />
-      <polygon points="1154,270 1360,220 1360,234 1328,248 1124,292" fill={tone.sideDeep} />
-      <polygon points="752,244 780,268 780,280 742,256" fill={nagai.warm} />
+      <polygon points="718,208 1110,258 1344,190 910,156" fill="#FBF4E4" />
+      <polygon points="718,208 1110,258 1068,286 748,246" fill="#B89568" />
+      <polygon points="1110,258 1344,190 1344,208 1296,228 1068,286" fill={tone.sideDeep} />
+      <polygon points="718,208 748,246 748,260 706,222" fill={nagai.warm} />
+
+      <polygon points="1088,575 1336,508 1480,600 1480,1000 1020,956" fill={nagai.shadow} opacity={tone.night ? 0.34 : 0.22} />
+      <polygon points="0,620 248,628 40,960 0,1000" fill={nagai.shadow} opacity={tone.night ? 0.3 : 0.18} />
 
       <DivingBoard />
       <g clipPath={`url(#${g("pool")})`} opacity="0.3">
