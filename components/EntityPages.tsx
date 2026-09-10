@@ -14,34 +14,39 @@ import {
   getStoriesForEntity,
 } from "@/lib/content";
 import { DEVELOPMENT_STATUSES, entityPath, type EntityType } from "@/lib/types";
+import type { NagaiScene } from "@/lib/nagai";
 
 const copy: Record<
   EntityType,
-  { title: string; eyebrow: string; dek: string; singular: string }
+  { title: string; eyebrow: string; dek: string; singular: string; scene: NagaiScene }
 > = {
   development: {
     eyebrow: "The board",
     title: "Developments",
     singular: "Development",
     dek: "Proposed, in review, approved, under construction, complete.",
+    scene: "facade",
   },
   place: {
     eyebrow: "The ground",
     title: "Places",
     singular: "Place",
     dek: "Squares, streets, a lakefront, a campus.",
+    scene: "lake",
   },
   business: {
     eyebrow: "The storefronts",
     title: "Businesses",
     singular: "Business",
     dek: "Independents, markets, and the leagues that speak for a block.",
+    scene: "pool",
   },
   person: {
     eyebrow: "The room",
     title: "People",
     singular: "Person",
     dek: "Commissioners, staff, architects.",
+    scene: "night",
   },
 };
 
@@ -51,7 +56,7 @@ export function EntityIndex({ type }: { type: EntityType }) {
 
   return (
     <>
-      <PageIntro eyebrow={intro.eyebrow} title={intro.title} dek={intro.dek} />
+      <PageIntro eyebrow={intro.eyebrow} title={intro.title} dek={intro.dek} scene={intro.scene} />
       <div className="mx-auto max-w-page px-5 pb-24 md:px-8">
         {type === "development" ? (
           <DevelopmentTracker developments={entities} />
@@ -102,7 +107,7 @@ export function EntityDetail({ type, slug }: { type: EntityType; slug: string })
             {DEVELOPMENT_STATUSES.map((status, index) => (
               <li
                 key={status}
-                className={`label ${index === statusIndex ? "text-lacquer" : ""}`}
+                className={`label ${index === statusIndex ? "text-cobalt" : ""}`}
               >
                 {status}
               </li>

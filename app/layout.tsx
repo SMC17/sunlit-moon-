@@ -1,27 +1,22 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Literata, Fragment_Mono } from "next/font/google";
+import { Syne, Zen_Kaku_Gothic_New } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Bodoni_Moda({
+const display = Syne({
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Literata({
+const body = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   variable: "--font-body",
-  display: "swap",
-});
-
-const mono = Fragment_Mono({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -45,10 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable} ${mono.variable}`}
-    >
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className={`${body.className} min-h-screen bg-sand-50 text-ink antialiased`}>
         <SmoothScroll>
           <SiteHeader />

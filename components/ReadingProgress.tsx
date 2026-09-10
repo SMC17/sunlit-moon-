@@ -27,7 +27,7 @@ export function ReadingProgress({ targetId }: { targetId: string }) {
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-px">
       <div
-        className="h-px bg-lacquer"
+        className="h-px bg-pool"
         style={{ width: `${progress * 100}%` }}
       />
     </div>

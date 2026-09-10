@@ -28,7 +28,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-ink/15 bg-sand-50">
       <div className="mx-auto flex max-w-page items-baseline justify-between gap-6 px-5 py-4 md:px-8">
         <Link href="/evanston" className="flex items-baseline gap-3">
-          <span className="font-display text-[1.65rem] leading-none tracking-tight">
+          <span className="font-display text-[1.55rem] font-extrabold leading-none tracking-tight">
             {site.name}
           </span>
           <span className="label hidden sm:inline">{site.edition}</span>

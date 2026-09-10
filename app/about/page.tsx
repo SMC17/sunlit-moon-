@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NagaiPanel } from "@/components/NagaiArt";
 import { RequestLink } from "@/components/Subscribe";
 import { site } from "@/lib/site";
 
@@ -51,6 +52,7 @@ export default function AboutPage() {
           </p>
         </section>
         <aside className="md:col-span-4 md:col-start-9">
+          <NagaiPanel scene="night" className="mb-8 aspect-[5/4]" />
           <p className="label">Forthcoming</p>
           <p className="mt-4 font-display text-3xl leading-snug tracking-tight">
             {site.comingSoon.join(". ")}.

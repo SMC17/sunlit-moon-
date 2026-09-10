@@ -2,17 +2,18 @@
 
 An edition of Evanston & the North Shore — Volume 0.
 
-Print discipline on the web: Bodoni Moda, Literata, Fragment Mono. Bone, charcoal, and a single lacquer red. Photography treated as objects — cropped, grayscale — not a stock-hero wallpaper.
+Art-directed as a city-pop sleeve: original geometric illustration in the vocabulary of Hiroshi Nagai — printed sky bands, cream modernism, pool aqua, long cobalt shadows — translated to the lakefront.
 
 ## Craft
 
-- **Bodoni Moda** (display) · **Literata** (text) · **Fragment Mono** (labels)
-- **Motion** — opacity and 8–12px translate only
-- **Radix UI** — index menu, development filters
+- **Syne** (display) · **Zen Kaku Gothic New** (text)
+- Custom SVG scenes (`NagaiArt`) — sleeve, pool, facade, lake, night. Original geometry, not scans.
+- **Motion** — 320ms parallax on the cover, no bounce
+- **Radix** — index menu, development filters
 - **Lenis** — quiet scroll
 - **Embla** — story rail
 
-Request the edition as a letterpress form in the footer. No drawer, no sticky bar, no film grain.
+Request the edition as a hairline form in the night footer. No drawer, no sticky bar, no film grain, no Unsplash hero.
 
 ## Product
 
@@ -47,8 +48,6 @@ Stories and entities link both ways.
 Highlighted file in the ledger:
 
 - [Fountain Square redevelopment](content/entities/developments.json) — status **In review**, linked to Plan Commission, Downtown Evanston, Fountain Square, and the architect portrait.
-
-Civic names (Fountain Square, Downtown Evanston, the lakefront, Plan Commission as a body) are used as place anchors. Named individuals other than public bodies are composite demo portraits.
 
 ## Develop
 

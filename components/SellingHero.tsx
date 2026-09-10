@@ -1,42 +1,29 @@
 import Link from "next/link";
-import { Photo } from "@/components/Photo";
+import { NagaiSleeve } from "@/components/NagaiArt";
 import { RequestLink } from "@/components/Subscribe";
 import { formatIssueDate } from "@/lib/format";
-import { media, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export function SellingHero() {
   return (
-    <section className="border-b border-ink/15">
-      <div className="mx-auto grid max-w-page items-end gap-10 px-5 py-14 md:grid-cols-12 md:px-8 md:py-20">
-        <div className="md:col-span-7">
-          <p className="label">
-            {site.volume} · {formatIssueDate(site.issueDate)}
-          </p>
-          <h1 className="mt-6 font-display text-[3.4rem] leading-[0.88] tracking-[-0.03em] text-pretty md:text-7xl lg:text-[5.4rem]">
-            {site.headline}
-          </h1>
-          <p className="mt-8 max-w-md font-body text-lg leading-relaxed text-ink-muted md:text-xl">
-            {site.subhead}
-          </p>
-          <div className="mt-10 flex flex-wrap items-baseline gap-8">
-            <RequestLink className="btn-ink" />
-            <Link href="/developments" className="label link-quiet text-ink">
-              {site.ctaSecondary}
-            </Link>
-          </div>
+    <section className="relative min-h-[88svh] overflow-hidden bg-cobalt text-sand-50">
+      <NagaiSleeve />
+      <div className="relative mx-auto flex min-h-[88svh] max-w-page flex-col justify-end px-5 pb-10 pt-10 md:px-8 md:pb-14">
+        <p className="label text-sand-50/80">
+          {site.volume} · {formatIssueDate(site.issueDate)} · {site.edition}
+        </p>
+        <h1 className="mt-4 max-w-xl font-display text-5xl font-extrabold leading-[0.92] tracking-[-0.04em] md:text-7xl">
+          {site.headline}
+        </h1>
+        <p className="mt-5 max-w-md text-base leading-relaxed text-sand-50/90 md:text-lg">
+          {site.subhead}
+        </p>
+        <div className="mt-8 flex flex-wrap items-baseline gap-8">
+          <RequestLink className="border-b border-sand-50 pb-1 text-sand-50 hover:border-pool hover:text-pool" />
+          <Link href="/developments" className="label text-sand-50/80 hover:text-sand-50">
+            {site.ctaSecondary}
+          </Link>
         </div>
-        <figure className="md:col-span-4 md:col-start-9">
-          <div className="overflow-hidden">
-            <Photo
-              src={media.hero.src}
-              alt={media.hero.alt}
-              className="photo-print aspect-[3/4] w-full object-cover object-[center_20%]"
-            />
-          </div>
-          <figcaption className="label mt-3">
-            {media.hero.credit}
-          </figcaption>
-        </figure>
       </div>
     </section>
   );

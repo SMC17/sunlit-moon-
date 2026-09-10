@@ -18,6 +18,7 @@ export default function StoriesPage() {
         eyebrow="Dispatches"
         title="This edition."
         dek="Fountain Square in review, the independent mile, the lakefront restored, and the Tuesday night room."
+        scene="facade"
       />
       {featured ? <CoverStory story={featured} /> : null}
       <div className="mx-auto max-w-page px-5 py-16 md:px-8">
