@@ -7,7 +7,7 @@ Art-directed as a city-pop sleeve: original geometric illustration in the vocabu
 ## Craft
 
 - **Syne** (display) · **Zen Kaku Gothic New** (text)
-- Custom SVG scenes (`NagaiArt`) — sleeve, pool, facade, lake, night. Original geometry, not scans.
+- Custom SVG illustration (`NagaiArt`) — one world, cropped: airbrushed sky, 3/4 villa with rails and glass, perspective pool with coping and chrome ladder, fronded palms, long afternoon shadows. Original, not scans.
 - **Motion** — 320ms parallax on the cover, no bounce
 - **Radix** — index menu, development filters
 - **Lenis** — quiet scroll

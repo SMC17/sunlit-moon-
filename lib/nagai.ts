@@ -1,22 +1,26 @@
 export const nagai = {
-  cobalt: "#1F5FA8",
-  sky: "#6FB0E0",
-  skyMid: "#9BCCEC",
-  skyLow: "#C8DFF2",
-  horizon: "#E7C4A4",
-  pool: "#2EC4D4",
-  poolDeep: "#1A9EAD",
+  cobalt: "#1B4F9C",
+  cerulean: "#3A86C8",
+  sky: "#6FB4E2",
+  haze: "#A9D2EC",
+  flesh: "#F2C4B0",
+  sun: "#F7D8C2",
+  pool: "#2BB8C9",
+  poolDeep: "#178A9C",
+  mint: "#7ED8C5",
   aqua: "#8FDFE6",
-  glass: "#B9E8EE",
+  glass: "#9ED4E4",
   coral: "#F0A094",
-  cream: "#F4E6C8",
-  building: "#E8D5B0",
-  plaza: "#D9C49A",
+  cream: "#F3E6CF",
+  concrete: "#E4D2B4",
+  warm: "#C9AE86",
+  plaza: "#D8C29A",
   sand: "#F3EFE4",
   indigo: "#162238",
-  night: "#0E1828",
-  shadow: "#1A3F72",
-  palm: "#16345C",
+  night: "#0C1424",
+  shadow: "#1A3A6E",
+  palm: "#143052",
+  palmDeep: "#0C2038",
 } as const;
 
 export type NagaiScene = "sleeve" | "pool" | "facade" | "lake" | "night";
@@ -28,3 +32,11 @@ export function sceneForKicker(kicker: string): NagaiScene {
   if (key.includes("street") || key.includes("mile")) return "pool";
   return "facade";
 }
+
+export const sceneCrop: Record<NagaiScene, string> = {
+  sleeve: "0 0 1600 1000",
+  pool: "40 520 820 460",
+  facade: "620 160 900 720",
+  lake: "0 40 1600 520",
+  night: "0 0 1600 1000",
+};
