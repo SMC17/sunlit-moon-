@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "fountain-square-redevelopment",
+    "type": "development",
+    "name": "Fountain Square redevelopment",
+    "dek": "A quieter tower, a wetter plaza, and a decade-old question: what is downtown for?",
+    "summary": "The proposal now before Plan Commission would rebuild the Fountain Square block with mixed-use housing above rebuilt retail, a re-graded plaza, and a civic water feature restored to the square that named it. Status: In review.",
+    "neighborhood": "Downtown",
+    "status": "In review",
+    "address": "1600–1640 Sherman Avenue",
+    "program": "Mixed-use · 212 homes · rebuilt plaza",
+    "related": ["plan-commission", "downtown-evanston", "fountain-square", "elias-ward"]
+  },
+  {
+    "slug": "1714-chicago-avenue",
+    "type": "development",
+    "name": "1714 Chicago Avenue",
+    "dek": "A mid-rise on the old bank parcel, now rising story by story.",
+    "summary": "Steel is up on the former commercial parcel at Chicago and Church. The building will hold 96 apartments over ground-floor retail, with a through-block walk that opens toward the library lawn.",
+    "neighborhood": "Downtown",
+    "status": "Under construction",
+    "address": "1714 Chicago Avenue",
+    "program": "96 apartments · retail podium",
+    "related": ["downtown-evanston", "maya-chen"]
+  },
+  {
+    "slug": "church-street-plaza",
+    "type": "development",
+    "name": "Church Street Plaza",
+    "dek": "A proposed civic room where the bus pulse and the bookstore already meet.",
+    "summary": "Still in concept: a privately financed public plaza on the south side of Church Street, tying the transit pulse to the independent retail that already holds the block. No entitlements filed.",
+    "neighborhood": "Downtown",
+    "status": "Proposed",
+    "address": "Church Street at Chicago Avenue",
+    "program": "Public plaza · seasonal market stalls",
+    "related": ["downtown-evanston", "bookends-and-beginnings", "plan-commission"]
+  },
+  {
+    "slug": "maple-avenue-residences",
+    "type": "development",
+    "name": "Maple Avenue Residences",
+    "dek": "Forty-eight homes approved on a quiet block west of the el.",
+    "summary": "City Council approved a four-story courtyard building of 48 homes, a third of them income-restricted, on a former surface lot. Construction is expected after winter.",
+    "neighborhood": "West of downtown",
+    "status": "Approved",
+    "address": "1500 Maple Avenue",
+    "program": "48 homes · 16 income-restricted",
+    "related": ["maya-chen", "plan-commission"]
+  },
+  {
+    "slug": "lakefront-pavilion-restoration",
+    "type": "development",
+    "name": "Lakefront Pavilion restoration",
+    "dek": "The 1930s shelter is whole again — paint, roof, and a view that never left.",
+    "summary": "A two-year restoration of the lakefront pavilion is complete: cedar roof, limestone patching, and the original lake-facing openings returned to daylight. The building reopened for weekend programs in August.",
+    "neighborhood": "Lakefront",
+    "status": "Complete",
+    "address": "Clark Street Beach",
+    "program": "Historic restoration · public pavilion",
+    "related": ["evanston-lakefront", "grosse-point-lighthouse"]
+  },
+  {
+    "slug": "main-street-lofts",
+    "type": "development",
+    "name": "Main Street Lofts",
+    "dek": "Work-live studios proposed above the independent mile.",
+    "summary": "A conversion of two walk-up commercial buildings into twelve work-live lofts, keeping storefronts intact. Plan Commission has the application; neighbors are watching the alley.",
+    "neighborhood": "Main–Dempster",
+    "status": "In review",
+    "address": "800–810 Main Street",
+    "program": "12 work-live lofts · retained retail",
+    "related": ["main-dempster-mile", "plan-commission", "union-pizzeria"]
+  }
+]

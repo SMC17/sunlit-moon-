@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "bookends-and-beginnings",
+    "type": "business",
+    "name": "Bookends & Beginnings",
+    "dek": "An independent bookstore that still behaves like a civic institution.",
+    "summary": "A Main Street bookstore whose events calendar doubles as a public square. The shop is one of the businesses watching Church Street Plaza and the Main Street Lofts conversion.",
+    "neighborhood": "Main–Dempster",
+    "category": "Books",
+    "related": ["main-dempster-mile", "church-street-plaza"]
+  },
+  {
+    "slug": "evanston-farmers-market",
+    "type": "business",
+    "name": "Evanston Farmers Market",
+    "dek": "Saturday mornings, University Plaza, weather permitting and often not.",
+    "summary": "The year-round market is downtown’s most reliable crowd. Any Fountain Square plan that ignores Saturday will learn otherwise by June.",
+    "neighborhood": "Downtown",
+    "category": "Market",
+    "related": ["downtown-evanston", "fountain-square"]
+  },
+  {
+    "slug": "union-pizzeria",
+    "type": "business",
+    "name": "Union Pizzeria",
+    "dek": "A neighborhood dining room on the independent mile.",
+    "summary": "A Main Street dining room that treats the block as its dining room. The proposed lofts upstairs would share an alley the kitchen already uses at 10 p.m.",
+    "neighborhood": "Main–Dempster",
+    "category": "Restaurant",
+    "related": ["main-dempster-mile", "main-street-lofts"]
+  },
+  {
+    "slug": "larsens-bakery",
+    "type": "business",
+    "name": "Larsen’s Bakery",
+    "dek": "Cardamom, rye, and a Central Street morning that has not changed its mind.",
+    "summary": "A family bakery on Central Street and a reminder that Evanston’s commercial life is not only downtown. Demo portrait of a North Shore morning business.",
+    "neighborhood": "Central Street",
+    "category": "Bakery",
+    "related": ["central-street"]
+  },
+  {
+    "slug": "the-celery-stalk",
+    "type": "business",
+    "name": "The Celery Stalk",
+    "dek": "A lunch counter that still knows the names of the people who plan the city.",
+    "summary": "A Sherman Avenue lunch counter across from the civic buildings. Plan Commission packets have been marked up at these tables for twenty years.",
+    "neighborhood": "Downtown",
+    "category": "Cafe",
+    "related": ["downtown-evanston", "plan-commission", "maya-chen"]
+  },
+  {
+    "slug": "downtown-partnership",
+    "type": "business",
+    "name": "Downtown Evanston Partnership",
+    "dek": "The civic business league that speaks for the square.",
+    "summary": "A business improvement organization that programs the plaza, advocates for retail, and will have a great deal to say about whatever Fountain Square becomes.",
+    "neighborhood": "Downtown",
+    "category": "Civic business",
+    "related": ["downtown-evanston", "fountain-square-redevelopment", "rosa-delgado"]
+  }
+]
