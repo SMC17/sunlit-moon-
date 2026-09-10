@@ -13,7 +13,7 @@ export function StoryRail({ stories }: { stories: Story[] }) {
   });
 
   return (
-    <div className="overflow-hidden" ref={emblaRef}>
+    <div className="overflow-hidden" ref={emblaRef} data-lenis-prevent>
       <div className="flex touch-pan-y gap-8 pl-5 md:gap-10 md:pl-8">
         {stories.map((story) => (
           <article
