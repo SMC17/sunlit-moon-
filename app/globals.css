@@ -137,6 +137,36 @@ body {
   font-style: italic;
 }
 
+@keyframes nagai-bloom {
+  0%,
+  100% {
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes nagai-shade {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5px, 2px);
+  }
+}
+
+.nagai-bloom {
+  animation: nagai-bloom 16s ease-in-out infinite;
+}
+
+.nagai-shade {
+  animation: nagai-shade 22s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

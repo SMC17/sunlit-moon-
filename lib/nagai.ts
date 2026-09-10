@@ -21,6 +21,9 @@ export const nagai = {
   shadow: "#1A3A6E",
   palm: "#143052",
   palmDeep: "#0C2038",
+  chrome: "#C9D6E0",
+  chromeHi: "#F4FBFF",
+  cope: "#F7F1E2",
 } as const;
 
 export type NagaiScene = "sleeve" | "pool" | "facade" | "lake" | "night";
@@ -35,8 +38,8 @@ export function sceneForKicker(kicker: string): NagaiScene {
 
 export const sceneCrop: Record<NagaiScene, string> = {
   sleeve: "0 0 1600 1000",
-  pool: "40 520 820 460",
-  facade: "620 160 900 720",
-  lake: "0 40 1600 520",
+  pool: "20 500 860 480",
+  facade: "600 140 920 760",
+  lake: "0 20 1600 540",
   night: "0 0 1600 1000",
 };
