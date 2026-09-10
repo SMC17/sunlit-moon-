@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -8,47 +9,18 @@ export const metadata: Metadata = {
 
 export default function NewsletterPage() {
   return (
-    <article className="pb-24">
-      <div className="mx-auto max-w-page px-5 py-16 md:px-8 md:py-24">
-        <p className="label text-sea">The evening edition</p>
-        <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
+    <article className="pb-28">
+      <div className="masthead-wash mx-auto max-w-page px-5 py-20 md:px-8 md:py-28">
+        <p className="label">The evening edition</p>
+        <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.035em] md:text-[5.2rem]">
           Not yet a letter. Already a desk.
         </h1>
-        <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink-muted">
+        <p className="mt-8 max-w-xl font-body text-xl leading-relaxed text-ink-muted md:text-[1.35rem]">
           When Sunlit Moon has something worth sending after dark — a status change, a hearing, a
           street that shifted — it will arrive here first. Volume 0 keeps the chair warm.
         </p>
-
-        <form
-          className="mt-14 max-w-lg border-y border-ink/15 py-10"
-          action="/newsletter"
-          method="get"
-        >
-          <label htmlFor="email" className="label">
-            Leave an address
-          </label>
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              placeholder="you@northshore.example"
-              className="flex-1 border-b border-ink/30 bg-transparent px-0 py-3 text-lg outline-none placeholder:text-ink-faint focus:border-sea"
-            />
-            <button
-              type="submit"
-              className="label border border-ink bg-ink px-5 py-3 text-sand-50 transition hover:bg-sea hover:border-sea"
-            >
-              Hold my place
-            </button>
-          </div>
-          <p className="mt-4 text-sm text-ink-faint">
-            No backend yet — this stub does not store mail. It exists so the edition has a door.
-          </p>
-        </form>
-
-        <p className="mt-16 max-w-md font-display text-2xl leading-snug text-ink-muted">
+        <NewsletterForm />
+        <p className="mt-20 max-w-md font-display text-3xl leading-snug tracking-tight text-ink-muted">
           {site.comingSoon.join(", ")} will get their own evening light. Evanston holds the lamp
           for now.
         </p>

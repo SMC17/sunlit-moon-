@@ -4,6 +4,19 @@
 
 A civic publication, not a dashboard: magazine hierarchy, newspaper discipline, and a public ledger of stories, buildings, and the people who tend them.
 
+## Craft
+
+Editorial stack on top of Next.js + Tailwind:
+
+- **Instrument Serif** + **Newsreader** + **Geist Sans**
+- **Motion** — page transitions, staggered masthead/pulse, restrained press states
+- **Radix UI** — accessible mobile menu (Dialog) and development status tabs
+- **Lenis** — smooth scroll on the edition
+- **Embla** — quiet drag rail for the rest of the stories
+- SVG film grain overlay (paper, not TV static)
+
+Sea is used as a rare accent. Pulse is type on paper, not KPI cards. The lead story is a cover plate.
+
 ## Product
 
 Next.js App Router, TypeScript, Tailwind. Content lives in-repo:

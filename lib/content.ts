@@ -7,6 +7,7 @@ import businesses from "@/content/entities/businesses.json";
 import people from "@/content/entities/people.json";
 import changesJson from "@/content/changes.json";
 import {
+  type DevelopmentStatus,
   type Entity,
   type EntityType,
   type MonthlyChange,
@@ -81,11 +82,19 @@ export function resolveStoryEntities(story: Story): Entity[] {
     .filter((entity): entity is Entity => Boolean(entity));
 }
 
+const TRACKER_ORDER: DevelopmentStatus[] = [
+  "In review",
+  "Under construction",
+  "Approved",
+  "Proposed",
+  "Complete",
+];
+
 export function getDevelopments() {
   return getEntitiesByType("development").sort((a, b) => {
     const order =
-      DEVELOPMENT_STATUSES.indexOf(a.status ?? "Proposed") -
-      DEVELOPMENT_STATUSES.indexOf(b.status ?? "Proposed");
+      TRACKER_ORDER.indexOf(a.status ?? "Proposed") -
+      TRACKER_ORDER.indexOf(b.status ?? "Proposed");
     return order || a.name.localeCompare(b.name);
   });
 }

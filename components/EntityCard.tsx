@@ -4,13 +4,13 @@ import { StatusChip } from "@/components/StatusChip";
 
 export function EntityCard({ entity }: { entity: Entity }) {
   return (
-    <article className="border-t border-ink/10 py-6">
+    <article className="border-t border-ink/10 py-7">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <p className="label">{entity.neighborhood ?? entity.category ?? entity.role}</p>
         {entity.status ? <StatusChip status={entity.status} /> : null}
       </div>
-      <h3 className="mt-2 font-display text-2xl tracking-tight">
-        <Link href={`${entityPath[entity.type]}/${entity.slug}`} className="hover:text-sea-deep">
+      <h3 className="mt-2 font-display text-[1.75rem] tracking-tight md:text-3xl">
+        <Link href={`${entityPath[entity.type]}/${entity.slug}`} className="link-quiet">
           {entity.name}
         </Link>
       </h3>
@@ -27,7 +27,7 @@ export function EntityLinkList({ entities }: { entities: Entity[] }) {
         <li key={entity.slug}>
           <Link
             href={`${entityPath[entity.type]}/${entity.slug}`}
-            className="inline-flex border border-ink/15 bg-sand-50 px-3 py-1 text-sm text-sea hover:border-sea/40 hover:bg-sea-foam"
+            className="inline-flex border border-ink/15 px-3 py-1 text-sm transition-colors duration-300 ease-out hover:border-ink/40 hover:bg-sand-100"
           >
             {entity.name}
           </Link>

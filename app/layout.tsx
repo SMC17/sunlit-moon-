@@ -1,20 +1,24 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Instrument_Serif, Newsreader } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { FilmGrain } from "@/components/FilmGrain";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Instrument_Serif({
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
-  axes: ["SOFT", "WONK"],
 });
 
-const sans = Source_Sans_3({
+const body = Newsreader({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -38,11 +42,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body className="paper-grain min-h-screen bg-sand-50 font-sans text-ink antialiased">
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${GeistSans.variable}`}
+    >
+      <body className={`${GeistSans.className} min-h-screen bg-sand-50 text-ink antialiased`}>
+        <SmoothScroll>
+          <FilmGrain />
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </SmoothScroll>
       </body>
     </html>
   );

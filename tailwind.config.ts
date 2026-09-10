@@ -10,50 +10,46 @@ const config: Config = {
     extend: {
       colors: {
         sand: {
-          50: "#F7F1E8",
-          100: "#F1E8D8",
-          200: "#E4D5BC",
-          300: "#D2BB96",
-          400: "#B8956A",
+          50: "#F4EEE4",
+          100: "#EBE3D4",
+          200: "#DDD0B8",
+          300: "#C9B48E",
+          400: "#B08A5C",
         },
         ink: {
-          DEFAULT: "#1C1916",
-          muted: "#5E574E",
+          DEFAULT: "#161412",
+          muted: "#5C564D",
           faint: "#8A8276",
         },
         sea: {
-          DEFAULT: "#1F4E5A",
-          deep: "#163842",
-          mist: "#D7E6E8",
-          foam: "#EEF5F5",
+          DEFAULT: "#1C4A54",
+          deep: "#14363E",
+          mist: "#D5E3E4",
+          foam: "#EEF4F4",
         },
         copper: {
-          DEFAULT: "#9A5B3C",
-          pale: "#E8D2C4",
+          DEFAULT: "#8F5338",
+          pale: "#E6D0C2",
         },
         olive: {
-          DEFAULT: "#4F5D3A",
-          pale: "#DDE3D0",
+          DEFAULT: "#4A5638",
+          pale: "#DCE2D1",
         },
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "Georgia", "serif"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
       },
       letterSpacing: {
-        label: "0.18em",
-        wordmark: "0.02em",
+        label: "0.2em",
       },
       maxWidth: {
         measure: "38rem",
-        page: "72rem",
+        page: "74rem",
       },
-      boxShadow: {
-        hairline: "inset 0 0 0 1px rgba(28, 25, 22, 0.12)",
-      },
-      backgroundImage: {
-        paper:
-          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E\")",
+      transitionTimingFunction: {
+        out: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

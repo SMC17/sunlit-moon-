@@ -6,12 +6,15 @@ export function ChangeLog({ changes }: { changes: MonthlyChange[] }) {
   return (
     <ol>
       {changes.map((change) => (
-        <li key={change.title} className="grid gap-2 border-t border-ink/10 py-5 md:grid-cols-[7rem_1fr] md:gap-8">
+        <li
+          key={change.title}
+          className="grid gap-2 border-t border-ink/10 py-6 md:grid-cols-[7.5rem_1fr] md:gap-10"
+        >
           <time className="label pt-1">{formatShortDate(change.date)}</time>
           <div>
-            <h3 className="font-display text-xl tracking-tight">
+            <h3 className="font-display text-[1.45rem] tracking-tight">
               {change.href ? (
-                <Link href={change.href} className="hover:text-sea-deep">
+                <Link href={change.href} className="link-quiet">
                   {change.title}
                 </Link>
               ) : (

@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
+import { DevelopmentTracker } from "@/components/DevelopmentTracker";
 import { EntityCard } from "@/components/EntityCard";
 import { EntityLinkList } from "@/components/EntityCard";
 import { PageIntro } from "@/components/PageIntro";
 import { StatusChip } from "@/components/StatusChip";
 import { StoryCard } from "@/components/StoryCard";
 import {
+  getDevelopments,
   getEntitiesByType,
   getEntity,
   getRelatedEntities,
@@ -43,17 +45,22 @@ const copy: Record<
 };
 
 export function EntityIndex({ type }: { type: EntityType }) {
-  const entities = getEntitiesByType(type);
   const intro = copy[type];
+  const entities = type === "development" ? getDevelopments() : getEntitiesByType(type);
+
   return (
     <>
       <PageIntro eyebrow={intro.eyebrow} title={intro.title} dek={intro.dek} />
-      <div className="mx-auto max-w-page px-5 pb-20 md:px-8">
-        <div className="border-t border-ink/20">
-          {entities.map((entity) => (
-            <EntityCard key={entity.slug} entity={entity} />
-          ))}
-        </div>
+      <div className="mx-auto max-w-page px-5 pb-24 md:px-8">
+        {type === "development" ? (
+          <DevelopmentTracker developments={entities} />
+        ) : (
+          <div className="border-t border-ink/15">
+            {entities.map((entity) => (
+              <EntityCard key={entity.slug} entity={entity} />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
@@ -65,51 +72,43 @@ export function EntityDetail({ type, slug }: { type: EntityType; slug: string })
   const related = getRelatedEntities(entity);
   const stories = getStoriesForEntity(entity.slug);
   const intro = copy[type];
+  const facts = [
+    entity.address ? { label: "Address", value: entity.address } : null,
+    entity.program ? { label: "Program", value: entity.program } : null,
+    entity.role ? { label: "Role", value: entity.role } : null,
+    entity.category ? { label: "Category", value: entity.category } : null,
+  ].filter((fact): fact is { label: string; value: string } => Boolean(fact));
+  const factCols =
+    facts.length >= 3 ? "md:grid-cols-3" : facts.length === 2 ? "md:grid-cols-2" : "";
 
   return (
-    <article className="pb-20">
-      <header className="mx-auto max-w-page px-5 pt-12 md:px-8 md:pt-16">
-        <p className="label text-sea">
+    <article className="pb-24">
+      <header className="mx-auto max-w-page px-5 pt-14 md:px-8 md:pt-20">
+        <p className="label">
           {intro.singular}
           {entity.neighborhood ? ` · ${entity.neighborhood}` : ""}
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-4">
-          <h1 className="font-display text-4xl tracking-tight md:text-6xl">{entity.name}</h1>
+          <h1 className="font-display text-5xl tracking-[-0.03em] md:text-7xl">{entity.name}</h1>
           {entity.status ? <StatusChip status={entity.status} /> : null}
         </div>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted md:text-xl">
+        <p className="mt-6 max-w-2xl font-body text-xl leading-relaxed text-ink-muted">
           {entity.dek}
         </p>
-        <dl className="mt-8 grid gap-6 border-y border-ink/15 py-6 text-sm md:grid-cols-3">
-          {entity.address ? (
-            <div>
-              <dt className="label">Address</dt>
-              <dd className="mt-1">{entity.address}</dd>
-            </div>
-          ) : null}
-          {entity.program ? (
-            <div>
-              <dt className="label">Program</dt>
-              <dd className="mt-1">{entity.program}</dd>
-            </div>
-          ) : null}
-          {entity.role ? (
-            <div>
-              <dt className="label">Role</dt>
-              <dd className="mt-1">{entity.role}</dd>
-            </div>
-          ) : null}
-          {entity.category ? (
-            <div>
-              <dt className="label">Category</dt>
-              <dd className="mt-1">{entity.category}</dd>
-            </div>
-          ) : null}
-        </dl>
+        {facts.length > 0 ? (
+          <dl className={`mt-10 grid gap-6 border-y border-ink/15 py-7 text-sm ${factCols}`}>
+            {facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="label">{fact.label}</dt>
+                <dd className="mt-1">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
       </header>
 
-      <div className="mx-auto max-w-measure px-5 py-10 md:px-0">
-        <p className="text-lg leading-relaxed">{entity.summary}</p>
+      <div className="mx-auto max-w-measure px-5 py-12 font-body text-lg leading-relaxed md:px-0">
+        <p>{entity.summary}</p>
       </div>
 
       {related.length > 0 ? (
@@ -120,11 +119,11 @@ export function EntityDetail({ type, slug }: { type: EntityType; slug: string })
       ) : null}
 
       {stories.length > 0 ? (
-        <section className="mx-auto mt-14 max-w-page px-5 md:px-8">
-          <h2 className="mb-6 border-b border-ink/20 pb-3 font-display text-3xl tracking-tight">
+        <section className="mx-auto mt-16 max-w-page px-5 md:px-8">
+          <h2 className="mb-6 border-b border-ink/15 pb-3 font-display text-3xl tracking-tight">
             In the edition
           </h2>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-10 md:grid-cols-2">
             {stories.map((story) => (
               <StoryCard key={story.slug} story={story} />
             ))}
@@ -132,8 +131,8 @@ export function EntityDetail({ type, slug }: { type: EntityType; slug: string })
         </section>
       ) : null}
 
-      <p className="mx-auto mt-12 max-w-page px-5 text-sm text-ink-faint md:px-8">
-        <a href={entityPath[type]} className="hover:text-ink">
+      <p className="mx-auto mt-14 max-w-page px-5 text-sm text-ink-faint md:px-8">
+        <a href={entityPath[type]} className="link-quiet">
           ← All {intro.title.toLowerCase()}
         </a>
       </p>

@@ -31,42 +31,42 @@ export default async function StoryPage({ params }: { params: Params }) {
   const entities = resolveStoryEntities(story);
 
   return (
-    <article className="pb-20">
-      <header className="mx-auto max-w-page px-5 pt-12 md:px-8 md:pt-16">
-        <p className="label text-sea">{story.kicker}</p>
-        <h1 className="mx-auto mt-4 max-w-4xl text-center font-display text-4xl leading-[1.08] tracking-tight text-balance md:text-6xl">
+    <article className="pb-24">
+      <header className="mx-auto max-w-page px-5 pt-14 md:px-8 md:pt-20">
+        <p className="label">{story.kicker}</p>
+        <h1 className="mx-auto mt-5 max-w-4xl text-center font-display text-5xl leading-[0.92] tracking-[-0.035em] text-pretty md:text-7xl">
           {story.title}
         </h1>
-        <p className="mx-auto mt-6 max-w-measure text-center text-lg leading-relaxed text-ink-muted md:text-xl">
+        <p className="mx-auto mt-7 max-w-measure text-center font-body text-xl leading-relaxed text-ink-muted md:text-[1.4rem]">
           {story.dek}
         </p>
-        <p className="mt-6 text-center text-sm text-ink-faint">
+        <p className="mt-7 text-center text-sm text-ink-faint">
           {formatIssueDate(story.date)} · {story.author}
         </p>
       </header>
 
-      <figure className="mx-auto mt-12 max-w-page px-5 md:px-8">
-        <div className="relative aspect-[16/9] overflow-hidden bg-sand-200">
+      <figure className="mt-12 md:mt-16">
+        <div className="relative h-[52vh] min-h-[18rem] max-h-[40rem] overflow-hidden bg-sand-200 md:h-[64vh]">
           <Image
             src={story.hero.src}
             alt={story.hero.alt}
             fill
             className="object-cover"
-            sizes="(min-width: 72rem) 72rem, 100vw"
+            sizes="100vw"
             priority
           />
         </div>
-        <figcaption className="mt-3 text-sm text-ink-faint">{story.hero.credit}</figcaption>
+        <figcaption className="mx-auto max-w-page px-5 pt-3 text-sm text-ink-faint md:px-8">
+          {story.hero.credit}
+        </figcaption>
       </figure>
 
-      <div className="prose-story mx-auto mt-12 max-w-measure px-5 md:px-0">
+      <div className="prose-story mx-auto mt-14 max-w-measure px-5 md:mt-16 md:px-0">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
             a: ({ href, children }) => (
-              <Link href={href ?? "#"} className="text-sea">
-                {children}
-              </Link>
+              <Link href={href ?? "#"}>{children}</Link>
             ),
           }}
         >
@@ -74,10 +74,10 @@ export default async function StoryPage({ params }: { params: Params }) {
         </ReactMarkdown>
       </div>
 
-      <aside className="mx-auto mt-16 max-w-measure border-t border-ink/15 px-5 pt-8 md:px-0">
-        <p className="label mb-4">In this story</p>
+      <aside className="mx-auto mt-20 max-w-measure border-t border-ink/15 px-5 pt-10 md:px-0">
+        <p className="label mb-5">In this story</p>
         <EntityLinkList entities={entities} />
-        <ul className="mt-6 flex flex-wrap gap-3">
+        <ul className="mt-7 flex flex-wrap gap-3">
           {story.tags.map((tag) => (
             <li key={tag} className="label text-ink-faint">
               {tag}

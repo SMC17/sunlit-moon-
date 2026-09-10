@@ -18,8 +18,8 @@ entities:
   - maya-chen
   - rosa-delgado
 hero:
-  src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=80"
-  alt: "A pale civic plaza between brick and limestone buildings, late afternoon light"
+  src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a0?auto=format&fit=crop&w=1800&q=80"
+  alt: "Limestone and glass civic architecture in late daylight"
   credit: "Unsplash / demo photography"
 ---
 

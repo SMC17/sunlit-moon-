@@ -8,12 +8,14 @@ export function PageIntro({
   dek: string;
 }) {
   return (
-    <header className="mx-auto max-w-page px-5 pb-10 pt-12 md:px-8 md:pb-14 md:pt-16">
-      <p className="label text-sea">{eyebrow}</p>
-      <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
+    <header className="mx-auto max-w-page px-5 pb-12 pt-14 md:px-8 md:pb-16 md:pt-20">
+      <p className="label">{eyebrow}</p>
+      <h1 className="mt-4 max-w-4xl font-display text-5xl leading-[0.92] tracking-[-0.03em] text-pretty md:text-7xl">
         {title}
       </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted md:text-xl">{dek}</p>
+      <p className="mt-6 max-w-2xl font-body text-xl leading-relaxed text-ink-muted md:text-[1.35rem]">
+        {dek}
+      </p>
     </header>
   );
 }

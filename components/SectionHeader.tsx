@@ -10,13 +10,13 @@ export function SectionHeader({
   href?: string;
 }) {
   return (
-    <div className="mb-8 flex items-end justify-between gap-4 border-b border-ink/20 pb-3">
+    <div className="mb-8 flex items-end justify-between gap-4 border-b border-ink/15 pb-3">
       <div>
         {eyebrow ? <p className="label mb-2">{eyebrow}</p> : null}
-        <h2 className="font-display text-3xl tracking-tight md:text-4xl">{title}</h2>
+        <h2 className="font-display text-[2rem] tracking-tight md:text-[2.6rem]">{title}</h2>
       </div>
       {href && hrefLabel ? (
-        <a href={href} className="label shrink-0 text-sea hover:text-ink">
+        <a href={href} className="label shrink-0 link-quiet">
           {hrefLabel}
         </a>
       ) : null}
