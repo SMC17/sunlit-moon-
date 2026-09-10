@@ -1,54 +1,38 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
-import { Photo } from "@/components/Photo";
-import { fadeUp, stagger } from "@/lib/motion";
 
 export type PulseStat = {
   value: number;
   label: string;
   hint: string;
   href: string;
-  image: string;
-  alt: string;
 };
 
 export function Pulse({ stats }: { stats: PulseStat[] }) {
-  const reduce = useReducedMotion();
-
   return (
-    <section aria-label="What’s moving" id="moving">
-      <motion.div
-        className="grid sm:grid-cols-2 lg:grid-cols-4"
-        variants={stagger}
-        initial={reduce ? false : "hidden"}
-        whileInView="show"
-        viewport={{ once: true, margin: "-8%" }}
-      >
-        {stats.map((stat) => (
-          <motion.div key={stat.label} variants={fadeUp}>
-            <Link href={stat.href} className="group relative block min-h-[22rem] overflow-hidden bg-ink md:min-h-[26rem]">
-              <Photo
-                src={stat.image}
-                alt={stat.alt}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/15" />
-              <div className="relative flex min-h-[22rem] flex-col justify-end p-5 text-sand-50 md:min-h-[26rem] md:p-6">
-                <p className="font-display text-6xl leading-none tracking-[-0.05em] md:text-7xl">
-                  {stat.value}
-                </p>
-                <p className="mt-3 font-display text-2xl leading-tight tracking-tight">{stat.label}</p>
-                <p className="mt-2 text-sm text-sand-200">{stat.hint}</p>
-                <p className="label mt-5 text-sand-50 transition-colors duration-300 group-hover:text-sea-mist">
-                  Open the file →
-                </p>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+    <section aria-label="This edition" className="border-b border-ink/15">
+      <div className="mx-auto max-w-page px-5 py-12 md:px-8 md:py-16">
+        <p className="label mb-8">Contents</p>
+        <ol>
+          {stats.map((stat) => (
+            <li key={stat.label} className="border-t border-ink/15 last:border-b">
+              <Link
+                href={stat.href}
+                className="grid items-baseline gap-2 py-4 md:grid-cols-[1fr_auto] md:gap-8"
+              >
+                <span>
+                  <span className="font-display text-2xl tracking-tight md:text-3xl">
+                    {stat.label}
+                  </span>
+                  <span className="mt-1 block text-sm text-ink-muted">{stat.hint}</span>
+                </span>
+                <span className="font-mono text-sm tabular-nums text-ink-faint">
+                  {String(stat.value).padStart(2, "0")}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }

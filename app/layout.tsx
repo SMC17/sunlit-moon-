@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Newsreader } from "next/font/google";
-import { GeistSans } from "geist/font/sans";
+import { Bodoni_Moda, Literata, Fragment_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { FilmGrain } from "@/components/FilmGrain";
-import { SubscribeProvider } from "@/components/Subscribe";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Instrument_Serif({
+const display = Bodoni_Moda({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Newsreader({
+const body = Literata({
   subsets: ["latin"],
   variable: "--font-body",
+  display: "swap",
+});
+
+const mono = Fragment_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -45,16 +47,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} ${GeistSans.variable}`}
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
-      <body className={`${GeistSans.className} min-h-screen bg-sand-50 text-ink antialiased`}>
+      <body className={`${body.className} min-h-screen bg-sand-50 text-ink antialiased`}>
         <SmoothScroll>
-          <SubscribeProvider>
-            <FilmGrain />
-            <SiteHeader />
-            <main>{children}</main>
-            <SiteFooter />
-          </SubscribeProvider>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
         </SmoothScroll>
       </body>
     </html>

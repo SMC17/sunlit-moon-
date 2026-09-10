@@ -1,17 +1,17 @@
-export const easeOut = [0.16, 1, 0.3, 1] as const;
+export const easeOut = [0.25, 0.1, 0.25, 1] as const;
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 10 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: easeOut },
+    transition: { duration: 0.45, ease: easeOut },
   },
 };
 
 export const stagger = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.06 },
+    transition: { staggerChildren: 0.04, delayChildren: 0 },
   },
 };

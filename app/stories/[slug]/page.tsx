@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { EntityLinkList } from "@/components/EntityCard";
-import { NewsletterBand } from "@/components/Subscribe";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { RequestLink } from "@/components/Subscribe";
 import { StoryHero } from "@/components/StoryHero";
 import { getStories, getStory, resolveStoryEntities } from "@/lib/content";
 
@@ -32,7 +32,7 @@ export default async function StoryPage({ params }: { params: Params }) {
   const entities = resolveStoryEntities(story);
 
   return (
-    <article className="pb-0">
+    <article>
       <ReadingProgress targetId="story-body" />
       <StoryHero story={story} />
 
@@ -52,13 +52,10 @@ export default async function StoryPage({ params }: { params: Params }) {
       <aside className="mx-auto mt-16 max-w-measure border-t border-ink/15 px-5 py-10 md:px-0">
         <p className="label mb-5">In this story</p>
         <EntityLinkList entities={entities} />
+        <p className="mt-10 font-display text-2xl tracking-tight">
+          <RequestLink>The next dispatch is in the edition.</RequestLink>
+        </p>
       </aside>
-
-      <NewsletterBand
-        tone="sea"
-        eyebrow="If this mattered"
-        title="Get the next one before Tuesday night."
-      />
     </article>
   );
 }

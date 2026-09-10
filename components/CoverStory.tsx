@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Photo } from "@/components/Photo";
 import type { Story } from "@/lib/types";
@@ -7,27 +5,33 @@ import { formatShortDate } from "@/lib/format";
 
 export function CoverStory({ story }: { story: Story }) {
   return (
-    <article>
-      <Link href={`/stories/${story.slug}`} className="group relative block">
-        <div className="relative h-[78vh] min-h-[28rem] max-h-[52rem] overflow-hidden bg-ink">
+    <article className="border-b border-ink/15">
+      <div className="mx-auto grid max-w-page items-start gap-10 px-5 py-14 md:grid-cols-12 md:px-8 md:py-20">
+        <figure className="md:col-span-5 md:pt-10">
           <Photo
             src={story.hero.src}
             alt={story.hero.alt}
-            className="h-full w-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.04]"
+            className="photo-print aspect-[4/5] w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-ink/10" />
-          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-page px-5 pb-8 md:px-8 md:pb-12">
-            <p className="label text-sand-200">
-              Lead · {story.kicker} · {formatShortDate(story.date)}
-            </p>
-            <h2 className="mt-3 max-w-4xl font-display text-4xl leading-[0.92] tracking-[-0.035em] text-sand-50 md:text-6xl lg:text-7xl">
+          <figcaption className="label mt-3">{story.hero.credit}</figcaption>
+        </figure>
+        <div className="md:col-span-6 md:col-start-7">
+          <p className="label">
+            Lead · {story.kicker} · {formatShortDate(story.date)}
+          </p>
+          <h2 className="mt-5 font-display text-4xl leading-[0.92] tracking-[-0.03em] md:text-6xl">
+            <Link href={`/stories/${story.slug}`} className="link-quiet">
               {story.title}
-            </h2>
-            <p className="mt-4 max-w-xl font-body text-lg text-sand-100 md:text-xl">{story.dek}</p>
-            <span className="btn-light mt-6">Read the dispatch</span>
-          </div>
+            </Link>
+          </h2>
+          <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-ink-muted">
+            {story.dek}
+          </p>
+          <Link href={`/stories/${story.slug}`} className="btn-ink mt-8">
+            Continue
+          </Link>
         </div>
-      </Link>
+      </div>
     </article>
   );
 }

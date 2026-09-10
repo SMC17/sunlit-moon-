@@ -1,22 +1,18 @@
 # Sunlit Moon
 
-**Place OS** for Evanston & the North Shore — Volume 0.
+An edition of Evanston & the North Shore — Volume 0.
 
-A civic publication with conversion energy: cinematic Chicago-lakefront photography, a selling hero with live pulse, and a weekly brief you’d actually subscribe to. Never NYC skyline. Never Patch ads.
+Print discipline on the web: Bodoni Moda, Literata, Fragment Mono. Bone, charcoal, and a single lacquer red. Photography treated as objects — cropped, grayscale — not a stock-hero wallpaper.
 
 ## Craft
 
-Editorial stack on top of Next.js + Tailwind:
+- **Bodoni Moda** (display) · **Literata** (text) · **Fragment Mono** (labels)
+- **Motion** — opacity and 8–12px translate only
+- **Radix UI** — index menu, development filters
+- **Lenis** — quiet scroll
+- **Embla** — story rail
 
-- **Instrument Serif** + **Newsreader** + **Geist Sans**
-- **Motion** — page transitions, staggered reveals, CTA press
-- **Radix UI** — accessible mobile menu (Dialog) and development status tabs
-- **Lenis** — smooth scroll on the edition
-- **Embla** — story rail with thumbnails
-- **Vaul** — subscribe drawer
-- SVG film grain overlay (paper, not TV static)
-
-Conversion surfaces: selling hero, clickable photographic pulse, story cards with images, sticky mobile CTA, mid-page and end-of-story brief.
+Request the edition as a letterpress form in the footer. No drawer, no sticky bar, no film grain.
 
 ## Product
 
@@ -33,16 +29,14 @@ Next.js App Router, TypeScript, Tailwind. Content lives in-repo:
 | `/` | Redirects to `/evanston` |
 | `/evanston` | Edition homepage |
 | `/stories`, `/stories/[slug]` | Dispatches |
-| `/developments`, `/developments/[slug]` | Development tracker + files |
+| `/developments`, `/developments/[slug]` | Development ledger + files |
 | `/places`, `/places/[slug]` | Civic rooms |
 | `/businesses`, `/businesses/[slug]` | Storefronts and leagues |
 | `/people`, `/people/[slug]` | Commissioners, staff, portraits |
-| `/about` | Mission and forthcoming editions |
-| `/newsletter` | Evening-edition stub (no backend) |
+| `/about` | Colophon |
+| `/newsletter` | Request the edition (form in footer) |
 | `/rss.xml` | RSS of stories |
 | `/sitemap.xml` | Sitemap |
-
-Homepage: full-bleed lakefront hero with live pulse on the fold, cover story, sea conversion band, thumbnail story rail, development pipeline cards with follow stubs, “What changed,” sticky brief CTA. Stories get a magazine cover, reading progress, and an end-of-dispatch subscribe you cannot miss.
 
 Stories and entities link both ways.
 
