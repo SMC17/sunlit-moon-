@@ -2,7 +2,7 @@
 
 **Place OS** for Evanston & the North Shore — Volume 0.
 
-A civic publication with conversion energy: a selling hero, photographic heat, and a weekly brief you’d actually subscribe to.
+A civic publication with conversion energy: cinematic Chicago-lakefront photography, a selling hero with live pulse, and a weekly brief you’d actually subscribe to. Never NYC skyline. Never Patch ads.
 
 ## Craft
 
@@ -42,7 +42,7 @@ Next.js App Router, TypeScript, Tailwind. Content lives in-repo:
 | `/rss.xml` | RSS of stories |
 | `/sitemap.xml` | Sitemap |
 
-Homepage: selling hero with primary/secondary CTAs, photographic pulse into the ledger, cover story, newsletter bands, thumbnail story rail, development tracker, “What changed,” sticky mobile subscribe.
+Homepage: full-bleed lakefront hero with live pulse on the fold, cover story, sea conversion band, thumbnail story rail, development pipeline cards with follow stubs, “What changed,” sticky brief CTA. Stories get a magazine cover, reading progress, and an end-of-dispatch subscribe you cannot miss.
 
 Stories and entities link both ways.
 

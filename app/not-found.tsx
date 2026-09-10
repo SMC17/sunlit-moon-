@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-page px-5 py-24 md:px-8">
+    <div className="mx-auto max-w-page px-5 pb-24 pt-32 md:px-8">
       <p className="label">404</p>
       <h1 className="mt-4 font-display text-5xl tracking-tight">This page is off the docket.</h1>
       <p className="mt-4 max-w-md font-body text-lg text-ink-muted">

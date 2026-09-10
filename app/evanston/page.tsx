@@ -2,7 +2,6 @@ import { CoverStory } from "@/components/CoverStory";
 import { ChangeLog } from "@/components/ChangeLog";
 import { DevelopmentTracker } from "@/components/DevelopmentTracker";
 import { NewsletterBand } from "@/components/Subscribe";
-import { Pulse } from "@/components/Pulse";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SellingHero } from "@/components/SellingHero";
@@ -20,14 +19,12 @@ export default function EvanstonPage() {
 
   return (
     <>
-      <SellingHero />
-
-      <Pulse
+      <SellingHero
         stats={[
           {
             value: pulse.inReview,
             label: "In review now",
-            hint: "Fountain Square is on the docket. Open the board.",
+            hint: "Fountain Square is on the docket.",
             href: "/developments",
             image: media.civic.src,
             alt: media.civic.alt,
@@ -35,7 +32,7 @@ export default function EvanstonPage() {
           {
             value: pulse.developments,
             label: "Developments tracked",
-            hint: "Proposed through complete — every file we have.",
+            hint: "Proposed through complete.",
             href: "/developments",
             image: media.construction.src,
             alt: media.construction.alt,
@@ -45,16 +42,16 @@ export default function EvanstonPage() {
             label: "Dispatches this edition",
             hint: "The square, the mile, Tuesday night.",
             href: "/stories",
-            image: featured?.hero.src ?? media.downtown.src,
-            alt: featured?.hero.alt ?? media.downtown.alt,
+            image: media.path.src,
+            alt: media.path.alt,
           },
           {
             value: site.proof.hearings,
             label: "Hearings in the file",
-            hint: "Plan Commission, in public, on the record.",
+            hint: "Plan Commission, on the record.",
             href: "/people/plan-commission",
-            image: media.downtown.src,
-            alt: media.downtown.alt,
+            image: media.lighthouse.src,
+            alt: media.lighthouse.alt,
           },
         ]}
       />
@@ -65,7 +62,11 @@ export default function EvanstonPage() {
         </Reveal>
       ) : null}
 
-      <NewsletterBand />
+      <NewsletterBand
+        tone="sea"
+        eyebrow="Mid-edition"
+        title="Two files in review. Don’t learn it from the group chat."
+      />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-page px-5 md:px-8">
@@ -84,9 +85,9 @@ export default function EvanstonPage() {
               hrefLabel="Full ledger"
             />
             <p className="mb-8 max-w-xl text-ink-muted">
-              Two files in review. One rising on Chicago Avenue. Status chips you can actually use.
+              Status as a pipeline, not a spreadsheet. Follow a file; we’ll tell you when it flips.
             </p>
-            <DevelopmentTracker developments={developments} />
+            <DevelopmentTracker developments={developments} compact />
           </section>
         </Reveal>
 

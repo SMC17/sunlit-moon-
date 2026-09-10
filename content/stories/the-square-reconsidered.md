@@ -18,8 +18,8 @@ entities:
   - maya-chen
   - rosa-delgado
 hero:
-  src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a0?auto=format&fit=crop&w=1800&q=80"
-  alt: "Limestone and glass civic architecture in late daylight"
+  src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1800&q=80"
+  alt: "Pale civic stone and glass — the kind of downtown room Fountain Square is supposed to be"
   credit: "Unsplash / demo photography"
 ---
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { NewsletterBand, SubscribeButton } from "@/components/Subscribe";
+import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
 import { media, site } from "@/lib/site";
 
@@ -11,16 +12,15 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <article>
-      <header className="relative overflow-hidden bg-ink text-sand-50">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={media.lakefront.src}
-          alt={media.lakefront.alt}
-          className="absolute inset-0 h-full w-full object-cover opacity-50"
+      <header className="relative min-h-[78vh] overflow-hidden bg-ink text-sand-50">
+        <Photo
+          src={media.lighthouse.src}
+          alt={media.lighthouse.alt}
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/25" />
-        <div className="relative mx-auto max-w-page px-5 py-24 md:px-8 md:py-32">
-          <p className="label text-sand-200">{site.tagline} · {site.edition}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" />
+        <div className="relative mx-auto flex min-h-[78vh] max-w-page flex-col justify-end px-5 pb-12 pt-28 md:px-8">
+          <p className="label text-sand-200">{site.tagline} · {site.edition} · {site.updatedLabel}</p>
           <h1 className="mt-4 max-w-4xl font-display text-5xl leading-[0.9] tracking-[-0.035em] md:text-[5rem]">
             Local intelligence you’d actually pay for.
           </h1>
@@ -28,7 +28,7 @@ export default function AboutPage() {
             {site.subhead}
           </p>
           <div className="mt-8">
-            <SubscribeButton variant="light">{site.ctaPrimary}</SubscribeButton>
+            <SubscribeButton variant="hero">{site.ctaPrimary}</SubscribeButton>
           </div>
         </div>
       </header>
@@ -38,23 +38,10 @@ export default function AboutPage() {
           <section className="md:col-span-7">
             <h2 className="font-display text-4xl tracking-tight">Why subscribe</h2>
             <ul className="mt-8 space-y-6">
-              {[
-                {
-                  t: "Before the gossip mill",
-                  b: "Status changes land in one brief — In review, Approved, Under construction — so you are not learning downtown from a neighbor who was at Plan Commission.",
-                },
-                {
-                  t: "The board, not the feed",
-                  b: "Six developments tracked. Twelve hearings in the file. Stories bound to buildings both ways.",
-                },
-                {
-                  t: "Evanston first, on purpose",
-                  b: "If a place OS cannot hold Fountain Square, it cannot hold a city. Long Island, Palm Beach, and New York City come when this one is true.",
-                },
-              ].map((item) => (
-                <li key={item.t} className="border-t border-ink/10 pt-5">
-                  <h3 className="font-display text-2xl tracking-tight">{item.t}</h3>
-                  <p className="mt-2 leading-relaxed text-ink-muted">{item.b}</p>
+              {site.benefits.map((item) => (
+                <li key={item.title} className="border-t border-ink/10 pt-5">
+                  <h3 className="font-display text-2xl tracking-tight">{item.title}</h3>
+                  <p className="mt-2 leading-relaxed text-ink-muted">{item.body}</p>
                 </li>
               ))}
             </ul>
@@ -74,7 +61,7 @@ export default function AboutPage() {
         </div>
       </Reveal>
 
-      <NewsletterBand title="One email. When the square moves." />
+      <NewsletterBand tone="sea" title="One email. When the square moves." />
     </article>
   );
 }

@@ -14,6 +14,7 @@ import { nav, site } from "@/lib/site";
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -26,14 +27,27 @@ export function SiteHeader() {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 28);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-30 border-b border-ink/[0.08] bg-sand-50">
+    <header
+      className={`fixed inset-x-0 top-0 z-40 text-sand-50 transition-[background-color,border-color,backdrop-filter] duration-300 ease-out ${
+        scrolled
+          ? "border-b border-sand-50/10 bg-ink/92 backdrop-blur-md"
+          : "border-b border-transparent bg-gradient-to-b from-ink/55 to-transparent"
+      }`}
+    >
       <div className="mx-auto flex max-w-page items-center justify-between gap-4 px-5 py-3 md:px-8">
         <Link href="/evanston" className="flex items-baseline gap-2.5">
           <span className="font-display text-[1.45rem] leading-none tracking-tight md:text-[1.65rem]">
             {site.name}
           </span>
-          <span className="label hidden sm:inline">{site.edition}</span>
+          <span className="label hidden text-sand-200 sm:inline">{site.edition}</span>
         </Link>
         <nav className="hidden md:block">
           <ul className="flex items-center gap-6">
@@ -43,7 +57,7 @@ export function SiteHeader() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`label ${active ? "text-ink" : "hover:text-ink"}`}
+                    className={`label ${active ? "text-sand-50" : "text-sand-200 hover:text-sand-50"}`}
                   >
                     {item.label}
                   </Link>
@@ -53,25 +67,27 @@ export function SiteHeader() {
           </ul>
         </nav>
         <div className="flex items-center gap-3">
-          <SubscribeButton className="hidden sm:inline-flex">{site.ctaPrimary}</SubscribeButton>
+          <SubscribeButton variant="light" className="hidden sm:inline-flex">
+            {site.ctaPrimary}
+          </SubscribeButton>
           <Dialog.Root open={open} onOpenChange={setOpen}>
             <Dialog.Trigger asChild>
-              <button type="button" className="label text-ink md:hidden" aria-label="Open menu">
+              <button type="button" className="label text-sand-50 md:hidden" aria-label="Open menu">
                 Menu
               </button>
             </Dialog.Trigger>
             <Dialog.Portal>
-              <Dialog.Overlay className="fixed inset-0 z-50 bg-sand-50" />
+              <Dialog.Overlay className="fixed inset-0 z-50 bg-ink" />
               <Dialog.Content
                 data-lenis-prevent
-                className="fixed inset-0 z-50 flex flex-col bg-sand-50 px-6 py-6"
+                className="fixed inset-0 z-50 flex flex-col bg-ink px-6 py-6 text-sand-50"
               >
                 <VisuallyHidden>
                   <Dialog.Title>Menu</Dialog.Title>
                 </VisuallyHidden>
                 <div className="flex items-center justify-between">
                   <span className="font-display text-2xl">{site.name}</span>
-                  <Dialog.Close className="label">Close</Dialog.Close>
+                  <Dialog.Close className="label text-sand-200">Close</Dialog.Close>
                 </div>
                 <motion.ul
                   className="mt-12 flex flex-col"
@@ -80,7 +96,7 @@ export function SiteHeader() {
                   animate="show"
                 >
                   {nav.map((item) => (
-                    <motion.li key={item.href} variants={fadeUp} className="border-b border-ink/10">
+                    <motion.li key={item.href} variants={fadeUp} className="border-b border-sand-50/15">
                       <Link
                         href={item.href}
                         className="block py-4 font-display text-4xl tracking-tight"
@@ -92,7 +108,9 @@ export function SiteHeader() {
                   ))}
                 </motion.ul>
                 <div className="mt-8">
-                  <SubscribeButton className="w-full justify-center">{site.ctaPrimary}</SubscribeButton>
+                  <SubscribeButton variant="light" className="w-full justify-center">
+                    {site.ctaPrimary}
+                  </SubscribeButton>
                 </div>
               </Dialog.Content>
             </Dialog.Portal>

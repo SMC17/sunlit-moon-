@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
+import { Photo } from "@/components/Photo";
 import { fadeUp, stagger } from "@/lib/motion";
 
 export type PulseStat = {
@@ -19,30 +20,30 @@ export function Pulse({ stats }: { stats: PulseStat[] }) {
   return (
     <section aria-label="What’s moving" id="moving">
       <motion.div
-        className="grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4"
+        className="grid sm:grid-cols-2 lg:grid-cols-4"
         variants={stagger}
         initial={reduce ? false : "hidden"}
         whileInView="show"
         viewport={{ once: true, margin: "-8%" }}
       >
         {stats.map((stat) => (
-          <motion.div key={stat.label} variants={fadeUp} className="bg-sand-50">
-            <Link href={stat.href} className="group block h-full">
-              <div className="relative aspect-[16/10] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={stat.image}
-                  alt={stat.alt}
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                />
-              </div>
-              <div className="px-4 py-5 md:px-5 md:py-6">
-                <p className="font-display text-5xl leading-none tracking-[-0.04em] md:text-6xl">
+          <motion.div key={stat.label} variants={fadeUp}>
+            <Link href={stat.href} className="group relative block min-h-[22rem] overflow-hidden bg-ink md:min-h-[26rem]">
+              <Photo
+                src={stat.image}
+                alt={stat.alt}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/15" />
+              <div className="relative flex min-h-[22rem] flex-col justify-end p-5 text-sand-50 md:min-h-[26rem] md:p-6">
+                <p className="font-display text-6xl leading-none tracking-[-0.05em] md:text-7xl">
                   {stat.value}
                 </p>
-                <p className="mt-3 font-display text-xl tracking-tight">{stat.label}</p>
-                <p className="mt-1 text-sm text-ink-muted">{stat.hint}</p>
-                <p className="label mt-4 text-ink group-hover:text-sea">Open →</p>
+                <p className="mt-3 font-display text-2xl leading-tight tracking-tight">{stat.label}</p>
+                <p className="mt-2 text-sm text-sand-200">{stat.hint}</p>
+                <p className="label mt-5 text-sand-50 transition-colors duration-300 group-hover:text-sea-mist">
+                  Open the file →
+                </p>
               </div>
             </Link>
           </motion.div>
