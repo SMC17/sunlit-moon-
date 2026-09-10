@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export function SellingHero() {
   return (
-    <section className="relative min-h-[92svh] overflow-hidden bg-[#2B6FBC] text-sand-50">
+    <section className="relative min-h-[92svh] overflow-hidden bg-[#1F5FA8] text-sand-50">
       <NagaiSleeve />
       <div className="relative mx-auto flex min-h-[92svh] max-w-page flex-col justify-end px-5 pb-8 pt-10 md:px-8 md:pb-12">
         <p className="label text-sand-50/75">
